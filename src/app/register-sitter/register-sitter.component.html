@@ -1,0 +1,32 @@
+
+<h1>Sign up as a sitter now!</h1>
+<form [formGroup]="registerSitterForm" (submit)="onSubmit(registerSitterForm)" novalidate>
+    
+    <label>Firstname:
+        <input  formControlName="firstname">
+      </label>
+      <label>lastname:
+        <input  formControlName="lastname">
+      </label>
+      <label>Password:
+          <input  formControlName="password">
+        </label>
+      <label>Birthdate:
+        <input  formControlName="Birthdate">
+      </label>
+      <label>Gender:
+        <input  formControlName="gender">
+      </label>
+      <label>Work area:
+        <input  formControlName="area">
+      </label>
+      <label>Rate:
+          <input  formControlName="rate">
+        </label>
+    
+      <p>Form value: {{ registerSitterForm.value | json }}</p>
+      <p>Form status: {{ registerSitterForm.status | json }}</p>
+    
+      <button type="submit">Register now!</button>
+    
+    </form>

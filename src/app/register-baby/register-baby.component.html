@@ -1,0 +1,51 @@
+
+<h1>Sign up as a baby now!</h1>
+<form [formGroup]="registerBabyForm" (submit)="onSubmit(registerBabyForm)" novalidate>
+      <div>
+      <label>Username:
+        <input id="username" formControlName="username">
+      </label>
+    </div>
+    <div>
+      <label>Firstname:
+        <input id="firstname" formControlName="firstname">
+      </label>
+    </div>
+    <div>
+      <label>lastname:
+        <input id="lastname" formControlName="lastname">
+      </label>
+    </div>
+    <div>
+      <label>Password:
+          <input id="password"  formControlName="password">
+      </label>
+    </div>
+    <div>
+      <label>Enter Password again:
+        <input id="password2"  formControlName="password2">
+      </label>
+    </div>
+    <div>  
+      <label>Birthdate:
+        <input id="birthdate" formControlName="birthdate">
+      </label>
+    </div>
+    <div>  
+      <label>Gender:
+        <input id="gender" formControlName="gender">
+      </label>
+    </div>
+    <div>
+      <label>Work area:
+        <input id="workArea" formControlName="area">
+      </label>
+    </div>
+      <p>Form value: {{ registerBabyForm.value | json }}</p>
+      <p>Form status: {{ registerBabyForm.status | json }}</p>
+    
+      <button id="signUpBaby" type="submit" >Register your baby</button>
+      
+    </form>
+
+    <p id="errMsg" *ngIf="errMsg">Error!</p>

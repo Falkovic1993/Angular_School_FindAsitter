@@ -1,0 +1,31 @@
+
+
+<h2> Detailed baby list</h2>
+<table>
+  <tr class="babyclass" *ngFor='let baby of data.babies'>
+  <td> {{baby.username}}</td>
+  <td> {{baby.firstname}}</td>
+  <td> {{baby.lastname}}</td>
+  <td> {{baby.Birthdate}}</td>
+  <td> {{baby.area}}</td>
+  <td> {{baby.gender}}</td>
+  <td><button (click)="onclick(baby.username)">Click</button></td>
+  <td><button (click)="onclickbaby(baby)">Edit</button></td>
+  </tr>
+</table>
+
+<h2> Detailed Sitters list</h2>
+<table>
+  <tr *ngFor='let sitter of data.sitters'>
+  <td> {{sitter.username}}</td>
+  <td> {{sitter.firstname}}</td>
+  <td> {{sitter.lastname}}</td>
+  <td> {{sitter.Birthdate}}</td>
+  <td> {{sitter.area}}</td>
+  <td> {{sitter.gender}}</td>
+  <td><button (click)="onclick(sitter.username)">Click</button></td>
+  <td> <a [routerLink]="['view/', sitter.username]">User details</a></td>
+  </tr>
+</table>
+
+<app-user-detailed></app-user-detailed>
