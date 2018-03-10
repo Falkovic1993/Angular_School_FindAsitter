@@ -1,4 +1,45 @@
+<div id="detailedSitterList" *ngIf="this.sitter">
+    <h2> Overview of {{sitter.username}}</h2>
+    <table>
+        <tr>
+            <td> {{sitter.username}}</td>
+            <td> {{sitter.firstname}}</td>
+            <td> {{sitter.lastname}}</td>
+            <td> {{sitter.Birthdate}}</td>
+            <td> {{sitter.area}}</td>
+            <td> {{sitter.gender}}</td>
+        </tr>
+    </table>
+    <form [formGroup]="editSitter" (submit)="onSubmitSitter(editSitter)" novalidate>
+        <input  formControlName="username">
+        <input  formControlName="firstname">
+        <input  formControlName="lastname">
+        <input  formControlName="Birthdate">
+        <input  formControlName="gender">
+        <input  formControlName="area">
+        <button id="btnUpdateSitter" type="submit">Save</button>
+    </form>
+</div>
 
-<h2>{{this.username}}</h2>
-<h2>{{this.lastname}}</h2>
-<h2>{{this.Birthdate}}</h2>
+<div id="detailedUserList" *ngIf="this.baby">
+        <h2> Overview of {{baby.username}}</h2>
+        <table>
+            <tr>
+                <td> {{baby.username}}</td>
+                <td> {{baby.firstname}}</td>
+                <td> {{baby.lastname}}</td>
+                <td> {{baby.Birthdate}}</td>
+                <td> {{baby.area}}</td>
+                <td> {{baby.gender}}</td>
+            </tr>
+        </table>
+        <form [formGroup]="editBaby" (submit)="onSubmitBaby(editBaby)" novalidate>
+            <input  formControlName="username">
+            <input  formControlName="firstname">
+            <input  formControlName="lastname">
+            <input  formControlName="Birthdate">
+            <input  formControlName="gender">
+            <input  formControlName="area">
+            <button id="btnUpdateBaby" type="submit">Save</button>
+        </form>
+    </div>

@@ -1,8 +1,8 @@
-import { browser, by, element } from "protractor";
+import { browser, by, element } from 'protractor';
 
 
 describe('Test for babies', () => {
-    it('1.0 Should create a new baby with valid input', async() =>{
+    it('1.0 Should create a new baby with valid input', async() => {
         browser.get('users-list');
         element.all(by.css('.babyclass')).then(function(elemsBefore) {
         element(by.id('navBaby')).click();
@@ -19,9 +19,8 @@ describe('Test for babies', () => {
             expect(elemsAfter.length - elemsBefore.length).toBe(1);
         });
     });
-        
-    })
-    it('1.1 Should not create a new baby with invalid input', async() =>{
+    });
+    it('1.1 Should not create a new baby with invalid input', async() => {
         browser.get('register-baby');
         element(by.id('username')).sendKeys('TestUser');
         element(by.id('firstname')).sendKeys('TestUser');
@@ -33,16 +32,11 @@ describe('Test for babies', () => {
         element(by.id('workArea')).sendKeys('TestUser');
         element(by.id('signUpBaby')).click();
         expect(element(by.id('errMsg')).isDisplayed());
-        
-    })
-    it('1.2 Should update create a new baby with valid input', async() =>{
-        
-    })
-    it('1.3 Should  not update create a new baby with invalid input', async() =>{
-        
-    })
-    it('1.4 Should delete a new baby with invalid input', async() =>{
-        
-    })
-
-})
+    });
+    it('1.2 Should update create a new baby with valid input', async() => {
+    });
+    it('1.3 Should  not update create a new baby with invalid input', async() => {
+    });
+    it('1.4 Should delete a new baby with invalid input', async() => {
+    });
+});

@@ -9,7 +9,7 @@
     <input  formControlName="password">
   </label>
 
-  <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+  <div *ngIf="loginForm.controls['username'].errors?.required && loginForm.controls['username'].touched">
     you must fill out your username
   </div>
 
@@ -19,8 +19,8 @@
   <button type="submit" [disabled]="loginForm.invalid">Login</button>
 
   <br>
-  <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+  <button id="btnLogin" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+  <button id="btnLogout" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
 
  <p> {{message}} </p>
 

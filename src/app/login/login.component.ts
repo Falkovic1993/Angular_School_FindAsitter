@@ -4,14 +4,14 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   message: String;
-  loginForm: FormGroup;  
+  loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, public authService: AuthService, public router: Router) {
     this.loginForm = this.fb.group({
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+        const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
         this.router.navigate([redirect]);
       }
     });
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
   onSubmit(loginForm) {
     console.log(loginForm.value);
 
-    if(loginForm.valid) {
+    if (loginForm.valid) {
       // Send http request to login
-    }else{
+    } else {
       // Display error message
     }
   }
