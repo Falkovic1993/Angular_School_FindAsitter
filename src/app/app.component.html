@@ -5,12 +5,16 @@
   </h1>
 </div>
 
+<button mat-button routerLink="/register-baby" routerLinkActive="active">Register Baby</button>
+<button mat-raised-button (click)="openDialog()">Register Baby</button>
+
 <nav>
   <a id="navBaby" routerLink="/register-baby" routerLinkActive="active">Register Baby</a>
   <a routerLink="/register-sitter" routerLinkActive="active">Register Sitter</a>
   <a routerLink="/app-login" routerLinkActive="active">Login</a>
   <a routerLink="/test" routerLinkActive="active">test</a>
-  <a id="navAdmin" routerLink="/admin" routerLinkActive="active">Admin Area</a>
+  <a routerLink="/baby-list" routerLinkActive="active">Baby list</a>
+  <a  id="navAdmin" routerLink="/admin" routerLinkActive="active">Admin Area</a>
   <a id="navUserList" *ngIf="authService.isLoggedIn" routerLink="admin/users" routerLinkActive="active">userslist</a>
 </nav>
 

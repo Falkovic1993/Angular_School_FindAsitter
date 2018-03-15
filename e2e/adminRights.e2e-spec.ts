@@ -43,4 +43,17 @@ describe('Test Admin rights', () => {
       });
     });
   });
-});
+    it('1.6 Edit a user', async() => {
+      browser.get('/app-login');
+      element(by.id('btnLogin')).click();
+      element(by.id('navUserList')).click();
+      const currentName = element.all(by.css('.babyUsername')).get(0).getText();
+      element.all(by.css('.btnbabies')).get(0).click();
+      element(by.id('detailedBabyUsername')).clear();
+      element(by.id('detailedBabyUsername')).sendKeys('Emil');
+      element(by.id('btnUpdateBaby')).click();
+      browser.navigate().back();
+      const newName = element.all(by.css('.babyUsername')).get(0).getText();
+      expect(newName).toBe('Emil');
+    });
+  });

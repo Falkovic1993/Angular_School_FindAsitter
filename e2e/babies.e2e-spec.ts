@@ -33,10 +33,4 @@ describe('Test for babies', () => {
         element(by.id('signUpBaby')).click();
         expect(element(by.id('errMsg')).isDisplayed());
     });
-    it('1.2 Should update create a new baby with valid input', async() => {
-    });
-    it('1.3 Should  not update create a new baby with invalid input', async() => {
-    });
-    it('1.4 Should delete a new baby with invalid input', async() => {
-    });
 });

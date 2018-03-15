@@ -1,0 +1,7 @@
+<h3>Overview over babies</h3>
+<div *ngFor="let baby of babies">
+  <app-baby
+    [babyInput]="baby"
+    (babyClicked)="onBabyClicked($event)">
+  </app-baby>
+</div>

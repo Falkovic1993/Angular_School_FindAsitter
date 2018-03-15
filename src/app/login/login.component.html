@@ -1,26 +1,23 @@
 
 <form [formGroup]="loginForm" (submit)="onSubmit(loginForm)" novalidate>
+    
+      <mat-form-field>
+        <input matInput placeholder="Username" formControlName="username"
+        [errorStateMatcher]="matcher">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="loginForm.controls['username'].errors?.required && loginForm.controls['username'].touched">
+          Please enter username!
+        </mat-error>
+      </mat-form-field>
 
-  <label>Username:
-    <input  formControlName="username">
-  </label>
+      <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
 
-  <label>Password:
-    <input  formControlName="password">
-  </label>
 
-  <div *ngIf="loginForm.controls['username'].errors?.required && loginForm.controls['username'].touched">
-    you must fill out your username
-  </div>
-
-  <p>Form value: {{ loginForm.value | json }}</p>
-  <p>Form status: {{ loginForm.status | json }}</p>
-
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-
-  <br>
-  <button id="btnLogin" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button id="btnLogout" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+  
+  <button mat-raised-button id="btnLogin" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+  <button mat-fab id="btnLogout" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
 
  <p> {{message}} </p>
 

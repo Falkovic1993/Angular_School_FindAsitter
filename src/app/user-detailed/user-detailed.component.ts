@@ -13,14 +13,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class UserDetailedComponent implements OnInit {
   username: String = this.route.snapshot.params.username;
-  lastname: String;
-  firstname: String;
-  password: String;
-  BirthDate: Date;
-  gender: String;
-  area: String;
   baby: Baby;
-  rate: number;
   sitter: Sitter;
   editBaby: FormGroup;
   editSitter: FormGroup;

@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailedComponent } from './user-detailed/user-detailed.component';
 import { AdminComponent } from './admin/admin.component';
+import { BabyListComponent } from './baby-list/baby-list.component';
 
 
 const appRoutes: Routes = [
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'register-baby', component: RegisterBabyComponent },
   { path: 'register-sitter', component: RegisterSitterComponent },
   { path: 'app-login', component: LoginComponent},
+  { path: 'baby-list', component: BabyListComponent},
   { path: 'users-list', component: UsersListComponent },
   { path: 'view/user-detail/:username', component: UserDetailedComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -53,6 +54,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
+  ngOnInit() {
+  }
+}
+
+@Component({
+  selector: 'app-login-dialog',
+  templateUrl: 'login-dialog.html',
+  styleUrls: [],
+})
+export class LoginDialogComponent implements OnInit {
+
+  constructor(
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
   }

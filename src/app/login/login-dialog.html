@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (submit)="onSubmit(loginForm)" novalidate>
+    
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="username"
+          [errorStateMatcher]="matcher">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="loginForm.controls['username'].errors?.required && loginForm.controls['username'].touched">
+            Please enter username!
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+            <input matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+  
+  
+    <button mat-raised-button id="btnLogin" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+    <button mat-fab id="btnLogout" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+  
+   <p> {{message}} </p>
+  
+  </form>
