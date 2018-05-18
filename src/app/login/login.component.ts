@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   message: String;
   loginForm: FormGroup;
-
-  constructor(private fb: FormBuilder, public authService: AuthService, public router: Router) {
+  
+  constructor(public fb: FormBuilder, public authService: AuthService, public router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -65,6 +65,9 @@ export class LoginComponent implements OnInit {
   styleUrls: [],
 })
 export class LoginDialogComponent implements OnInit {
+
+  message: String;
+  loginForm: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,

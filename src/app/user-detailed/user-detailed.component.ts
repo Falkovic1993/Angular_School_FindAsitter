@@ -5,6 +5,9 @@ import { Router, ActivatedRoute, Params, Data, Route} from '@angular/router';
 import { Baby } from '../entities/baby';
 import { Sitter } from '../entities/sitter';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { RegisterActions } from '../register-baby/register-baby.actions';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store/store';
 
 @Component({
   selector: 'app-user-detailed',
@@ -12,21 +15,33 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./user-detailed.component.scss']
 })
 export class UserDetailedComponent implements OnInit {
-  username: String = this.route.snapshot.params.username;
-  baby: Baby;
+  id: number = this.route.snapshot.params.username;
+  //public babies: Baby[];
+  public babyInfo: Baby[];
+  currentUser: {};
   sitter: Sitter;
   editBaby: FormGroup;
   editSitter: FormGroup;
   role: String;
+  subscription;
 
 
   constructor(private route: ActivatedRoute,
     private data: DataService,
     private fb: FormBuilder,
+    private registerActions: RegisterActions, 
+    private ngRedux: NgRedux<IAppState>
   ) {  }
 
+
+  updateUser(baby){
+    this.registerActions.updateUser(baby)
+  }
+
+  /*
   getRole() {
-    if (this.baby) {
+    if (this.babies) {
+      console.log(this.baby);
       this.role = 'Baby';
     } else if (this.sitter) {
       this.role = 'Sitter';
@@ -34,40 +49,36 @@ export class UserDetailedComponent implements OnInit {
   }
 
   onSubmitBaby(editBaby) {
+    this.registerActions.deleteBaby(editBaby)
+    
     const oldName = this.baby.username;
     console.log(oldName);
     console.log(this.baby);
     const newBaby: Baby = editBaby.value as Baby;
     this.data.updateBaby(newBaby, oldName);
   }
-  onSubmitSitter(editSitter) {
-    const oldName = this.sitter.username;
-    console.log(oldName);
-    console.log(this.sitter);
-    const updateSitter: Sitter = editSitter.value as Sitter;
-    this.data.updateSitter(updateSitter, oldName);
-  }
-
+   */
+  
 
   ngOnInit() {
-    this.baby = this.data.getBaby(this.username);
-    console.log(this.baby);
 
-    this.sitter = this.data.getSitter(this.username);
-    console.log(this.sitter);
+    this.subscription = this.ngRedux.select(state => state.register).subscribe(res => {
+      this.babyInfo = res.babies
+    });
 
-    this.getRole();
-
-    if (this.role === 'Baby') {
+    const currentUser = this.babyInfo.find(baby => baby._id == this.id)
+    this.currentUser = currentUser;
+    
       this.editBaby = this.fb.group({
-        username: [this.username , Validators.required],
-        firstname: [this.baby.firstname, Validators.required],
-        lastname: [this.baby.lastname, Validators.required],
-        Birthdate: [this.baby.Birthdate, Validators.required],
-        gender: [this.baby.gender, Validators.required],
-        area: [this.baby.area, Validators.required],
+        username: [currentUser.username , Validators.required],
+        firstname: [currentUser.firstname, Validators.required],
+        lastname: [currentUser.lastname, Validators.required],
+        birthdate: [currentUser.birthdate, Validators.required],
+        gender: [currentUser.gender, Validators.required],
+        area: [currentUser.area, Validators.required],
       });
-    } else if (this.role === 'Sitter') {
+     /* 
+    }else if (this.role === 'Sitter') {
       this.editSitter = this.fb.group({
         username: [this.username , Validators.required],
         firstname: [this.sitter.firstname, Validators.required],
@@ -76,6 +87,6 @@ export class UserDetailedComponent implements OnInit {
         gender: [this.sitter.gender, Validators.required],
         area: [this.sitter.area, Validators.required],
       });
-    }
+    }*/
   }
 }

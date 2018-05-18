@@ -6,11 +6,11 @@
     <td class="babyUsername"> {{baby.username}}</td>
     <td> {{baby.firstname}}</td>
     <td> {{baby.lastname}}</td>
-    <td> {{baby.Birthdate}}</td>
+    <td> {{baby.birthdate}}</td>
     <td> {{baby.area}}</td>
     <td> {{baby.gender}}</td>
-    <td><button class="btnbabies" (click)="onclick(baby.username)">Edit</button></td>
-    <td><button class="btnDeleteBaby" (click)="deleteBabies(baby.username)">Delete!</button></td>
+    <td><button class="btnbabies" (click)="onclick(baby._id)">Edit</button></td>
+    <td><button class="btnDeleteBaby" (click)="deleteUser(baby._id)">Delete!</button></td>
   </tr>
 </table>
 
@@ -22,7 +22,7 @@
     <td> {{sitter.username}}</td>
     <td> {{sitter.firstname}}</td>
     <td> {{sitter.lastname}}</td>
-    <td> {{sitter.Birthdate}}</td>
+    <td> {{sitter.birthdate}}</td>
     <td> {{sitter.area}}</td>
     <td> {{sitter.gender}}</td>
     <td><button class="btnSitters" (click)="onclick(sitter.username)">Edit</button></td>
@@ -30,4 +30,3 @@
   </tr>
 </table>
 
-<app-user-detailed></app-user-detailed>

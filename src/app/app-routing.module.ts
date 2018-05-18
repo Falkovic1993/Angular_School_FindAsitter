@@ -10,6 +10,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailedComponent } from './user-detailed/user-detailed.component';
 import { AdminComponent } from './admin/admin.component';
 import { BabyListComponent } from './baby-list/baby-list.component';
+import { RatingComponent } from './rating/rating.component';
 
 
 const appRoutes: Routes = [
@@ -20,10 +21,13 @@ const appRoutes: Routes = [
   { path: 'baby-list', component: BabyListComponent},
   { path: 'users-list', component: UsersListComponent },
   { path: 'view/user-detail/:username', component: UserDetailedComponent},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
-    {path: 'users', component: UsersListComponent}
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], 
+    children: [
+      {path: 'users', component: UsersListComponent}
   ] },
   { path: '**', component: PageNotFoundComponent},
+  { path: 'rating', component: RatingComponent}
+
 ];
 
 @NgModule({

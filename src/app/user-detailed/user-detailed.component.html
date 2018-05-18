@@ -21,25 +21,25 @@
     </form>
 </div>
 
-<div id="detailedUserList" *ngIf="this.baby">
-        <h2> Overview of {{baby.username}}</h2>
+<div id="detailedUserList" *ngIf="this.babyInfo">
+        <h2> Overview of {{currentUser.username}}</h2>
         <table>
             <tr>
-                <td> {{baby.username}}</td>
-                <td> {{baby.firstname}}</td>
-                <td> {{baby.lastname}}</td>
-                <td> {{baby.Birthdate}}</td>
-                <td> {{baby.area}}</td>
-                <td> {{baby.gender}}</td>
+                <td> username</td>
+                <td> firstanme</td>
+                <td> lastname</td>
+                <td> Birthdate</td>
+                <td> Area</td>
+                <td> Gender</td>
             </tr>
         </table>
-        <form [formGroup]="editBaby" (submit)="onSubmitBaby(editBaby)" novalidate>
-            <input id="detailedBabyUsername"  formControlName="username">
-            <input  formControlName="firstname">
-            <input  formControlName="lastname">
-            <input  formControlName="Birthdate">
-            <input  formControlName="gender">
-            <input  formControlName="area">
-            <button id="btnUpdateBaby" type="submit">Save</button>
+        <form [formGroup]="editBaby"  novalidate>
+            <input id="detailedBabyUsername"  formControlName="username" [(ngModel)]="currentUser.username">
+            <input  formControlName="firstname"[(ngModel)]="currentUser.firstname">
+            <input  formControlName="lastname" [(ngModel)]="currentUser.lastname">
+            <input  formControlName="birthdate"[(ngModel)]="currentUser.birthdate">
+            <input  formControlName="gender"[(ngModel)]="currentUser.gender">
+            <input  formControlName="area"[(ngModel)]="currentUser.area">
+            <button id="btnUpdateBaby" (click)="updateUser(currentUser)" type="submit">Save</button>
         </form>
     </div>

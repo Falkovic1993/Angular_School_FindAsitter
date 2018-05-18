@@ -1,5 +1,11 @@
 
 <h1>Sign up as a baby now!</h1>
+
+<button (click)="registerActions.setType(true)">isBaby true</button>
+<button (click)="registerActions.setType(false)">isBaby false</button>
+
+{{isBaby}}
+
 <form [formGroup]="registerBabyForm" (submit)="onSubmit(registerBabyForm)" novalidate>
       <div>
       <label>Username:
